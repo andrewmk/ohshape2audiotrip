@@ -34,14 +34,10 @@ with open("prrrum.yml", 'r') as ohshape_stream:
                 ev_obj = ev['obj']
                 ev_beat_str = '0000.0'
                 if song_bpm > 0.1:
+                    # Calculate whch beat (if bpm provided)
                     ev_beat = ev_time * (song_bpm / 60.0)
-                    ev_beat = (round(ev_beat * 10)) / 10.0
-                    last_digit = str(ev_beat)[-1]
-                    if last_digit in ('3', '4', '5', '6', '7'):
-                        beat_str = str(ev_beat)
-                        ev_beat = float(beat_str[:-1] + '5')
-                    else:
-                        ev_beat = round(ev_beat)
+                    # Round to nearest quarter beat
+                    ev_beat = (round(ev_beat * 4)) / 4
                     ev_beat_str = "{:06.1f}".format(ev_beat)
                 print(ev_beat_str + ': ' + ev_obj)
                 ev_type = ev_obj[:2]

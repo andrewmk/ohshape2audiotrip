@@ -1,7 +1,7 @@
 import yaml
 import json
 
-with open("prrrum.yml", 'r') as ohshape_stream:
+with open("input.yml", 'r') as ohshape_stream:
     with open("template.ats", 'r') as template_stream:
         try:
             oss = yaml.safe_load(ohshape_stream)
